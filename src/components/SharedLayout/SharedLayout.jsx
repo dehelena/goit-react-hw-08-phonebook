@@ -8,7 +8,6 @@ const SharedLayout = () => {
       <Header>
         <nav>
           <NavLinkStyled to="/">Home</NavLinkStyled>
-
           <NavLinkStyled to="/contacts">Contacts</NavLinkStyled>
         </nav>
       </Header>
