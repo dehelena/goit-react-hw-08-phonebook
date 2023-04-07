@@ -1,4 +1,4 @@
-import { FormAddContact } from 'components/FormAddContact/FormAddContact';
+import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 
 export default function Register() {
   return (
@@ -6,7 +6,7 @@ export default function Register() {
       {/* <Helmet> */}
       <title>Registration</title>
       {/* </Helmet> */}
-      <FormAddContact />
+      <RegisterForm />
     </div>
   );
 }

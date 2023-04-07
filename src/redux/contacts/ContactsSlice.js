@@ -25,26 +25,6 @@ const contactsSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  // reducers: {
-  //   addContact(state, action) {
-  //     console.log('action payload', action.payload);
-  //     //action.payload - об'єкт новоствореного контакту
-
-  //     state.items = [...state.items, action.payload];
-  //     // state.items.push(action.payload); -- теж можна додати таким чином
-  //   },
-  //   deleteContact(state, action) {
-  //     state.items = state.items.filter(
-  //       contact => contact.id !== action.payload
-  //     );
-  //   },
-  // },
-
-  //Властивість extraReducers використовується щоб оголосити редюсери
-  //для «зовнішніх» типів екшенів, тобто тих, які не згенеровані
-  //з властивості reducers.Оскільки ці редюсери обробляють «зовнішні»
-  //екшени, для них не буде створено генератори екшенів в slice.actions,
-  //в цьому немає необхідності.
   extraReducers: builder => {
     builder
       // ======= FETCH CONTACTS  ======

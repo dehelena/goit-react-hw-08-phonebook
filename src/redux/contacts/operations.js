@@ -6,14 +6,11 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (__, thunkAPI) => {
-    // під капотом dispatch({type: 'contacts/fetchAll/pending}), яку робить thunk
     try {
       const response = await axios.get('/contacts');
       return response.data;
-      // під капотом dispatch({type: 'contacts/fetchAll/fulfilled, payload: response.data})
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
-      // під капотом dispatch({type: 'contacts/fetchAll/rejected, payload: error.message})
     }
   }
 );
@@ -46,9 +43,9 @@ export const deleteContact = createAsyncThunk(
 
 export const patchContact = createAsyncThunk(
   'contacts/patchContact',
-  async (contactId, { rejectWithValue }) => {
+  async ({ newData, contactId }, { rejectWithValue }) => {
     try {
-      const response = await axios.patch(`/contacts/${contactId}`);
+      const response = await axios.patch(`/contacts/${contactId}`, newData);
       return response.data;
     } catch (e) {
       return rejectWithValue(e.message);

@@ -4,7 +4,11 @@ import { Routes, Route } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
 import Contacts from 'pages/Contacts';
 import Home from 'pages/Home';
-import SharedLayout from './SharedLayout/SharedLayout';
+import Layout from './Layout/Layout';
+import { RestrictedRoute } from 'RestrictedRoute';
+import { PrivateRoute } from 'PrivateRoute';
+import Register from 'pages/Register';
+import Login from 'pages/Login';
 
 const App = () => {
   // const dispatch = useDispatch();
@@ -16,13 +20,31 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {/* <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} /> */}
-          <Route path="contacts" element={<Contacts />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<Register />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+            }
+          />
+          <Route
+            path="/tasks"
+            element={
+              <PrivateRoute redirectTo="/login" component={<Contacts />} />
+            }
+          />
         </Route>
-        <Route path="*" element={<SharedLayout />} />
+        <Route path="*" element={<Layout />} />
       </Routes>
     </div>
   );
