@@ -1,7 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import Contacts from 'pages/Contacts';
 import Home from 'pages/Home';
 import Layout from './Layout/Layout';
@@ -9,12 +7,17 @@ import { RestrictedRoute } from 'RestrictedRoute';
 import { PrivateRoute } from 'PrivateRoute';
 import Register from 'pages/Register';
 import Login from 'pages/Login';
+// import { useDispatch } from 'react-redux';
+// import { useAuth } from 'hooks';
+// import { useEffect } from 'react';
+// import { fetchUserInfo } from 'redux/auth/operations';
 
 const App = () => {
   // const dispatch = useDispatch();
+  // const { isRefreshing } = useAuth();
 
   // useEffect(() => {
-  //   dispatch(fetchContacts());
+  //   dispatch(fetchUserInfo());
   // }, [dispatch]);
 
   return (
@@ -38,7 +41,7 @@ const App = () => {
             }
           />
           <Route
-            path="/tasks"
+            path="/contacts"
             element={
               <PrivateRoute redirectTo="/login" component={<Contacts />} />
             }

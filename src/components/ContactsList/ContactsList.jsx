@@ -18,6 +18,10 @@ export const ContactList = () => {
     dispatch(deleteContact(contactId));
   };
 
+  // const onEditContact = ({ newData, contactId}) => {
+  //   dispatch(patchContact({ newData, contactId }))
+  // };
+
   return (
     <ContactStyled>
       {filteredContacts.map(contact => {
@@ -25,6 +29,14 @@ export const ContactList = () => {
           <li key={contact.id} className="contactItem">
             <span>{contact.name} </span>
             <span> {contact.number} </span>
+            <button
+              type="button"
+              // onClick={() => {
+              //   onEditContact({contact.name, contact.number, contact.id});
+              // }}
+            >
+              Edit
+            </button>
             <button
               type="button"
               onClick={() => {
