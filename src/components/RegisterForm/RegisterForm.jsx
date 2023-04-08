@@ -35,7 +35,13 @@ export const RegisterForm = () => {
     <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
       <label className={css.label}>
         Username
-        <input type="text" name="name" value={name} onChange={handleChange} />
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleChange}
+          required
+        />
       </label>
       <label className={css.label}>
         Email
@@ -44,6 +50,7 @@ export const RegisterForm = () => {
           name="email"
           value={email}
           onChange={handleChange}
+          required
         />
       </label>
       <label className={css.label}>
@@ -53,6 +60,8 @@ export const RegisterForm = () => {
           name="password"
           value={password}
           onChange={handleChange}
+          minLength={7}
+          required
         />
       </label>
       <button type="submit">Register</button>
