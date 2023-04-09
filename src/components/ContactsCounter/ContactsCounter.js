@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
+import css from './ContactsCounter.module.css';
 
 export const ContactsCounter = () => {
   const contacts = useSelector(selectContacts);
@@ -10,7 +11,7 @@ export const ContactsCounter = () => {
 
   return (
     <div>
-      <p>You have {count} contacts</p>
+      <p className={css.countsText}>You have {count} contacts</p>
     </div>
   );
 };

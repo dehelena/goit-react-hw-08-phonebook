@@ -40,7 +40,7 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-export const patchContact = createAsyncThunk(
+export const updateContact = createAsyncThunk(
   'contacts/patchContact',
   async ({ newData, contactId }, { rejectWithValue }) => {
     try {

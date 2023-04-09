@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ContactStyled = styled.ul`
+  margin-top: 30px;
   text-align: center;
   color: #454545;
 

@@ -6,6 +6,8 @@ import { ContactList } from 'components/ContactsList/ContactsList';
 import { selectIsLoading } from 'redux/contacts/selectors';
 import { FormAddContact } from 'components/FormAddContact/FormAddContact';
 import { ContactsCounter } from 'components/ContactsCounter/ContactsCounter';
+import Box from '@mui/material/Box';
+import { Container } from '@mui/material';
 
 export default function Contacts() {
   const isLoading = useSelector(selectIsLoading);
@@ -17,15 +19,15 @@ export default function Contacts() {
 
   return (
     <>
-      {/* <Helmet> */}
-      <title>Your contacts</title>
-      <h1>Your contacts book</h1>
-      <ContactsCounter />
-      {/* </Helmet> */}
-      <div>{isLoading && 'Request in progress...'}</div>
-      <FormAddContact />
-      <Filter />
-      <ContactList />
+      <Box component="div">
+        <Container maxWidth="sm">
+          <div>{isLoading && 'Request in progress...'}</div>
+          <ContactsCounter />
+          <FormAddContact />
+          <Filter />
+          <ContactList />
+        </Container>
+      </Box>
     </>
   );
 }

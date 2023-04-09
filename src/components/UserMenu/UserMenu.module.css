@@ -1,9 +1,21 @@
 .wrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .username {
   font-weight: 700;
+}
+.userIcon {
+  margin-right: 5px;
+}
+
+.logout {
+  margin-right: 30px;
+}
+
+.logout:hover,
+.logout:focus {
+  fill: red;
 }

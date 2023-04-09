@@ -3,6 +3,8 @@ import { ContactStyled } from './ContactsStyled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectFilteredTerm } from 'redux/contacts/selectors';
 import { deleteContact } from 'redux/contacts/operations';
+import { IconButton, Tooltip } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -18,10 +20,6 @@ export const ContactList = () => {
     dispatch(deleteContact(contactId));
   };
 
-  // const onEditContact = ({ newData, contactId}) => {
-  //   dispatch(patchContact({ newData, contactId }))
-  // };
-
   return (
     <ContactStyled>
       {filteredContacts.map(contact => {
@@ -29,22 +27,15 @@ export const ContactList = () => {
           <li key={contact.id} className="contactItem">
             <span>{contact.name} </span>
             <span> {contact.number} </span>
-            <button
-              type="button"
-              // onClick={() => {
-              //   onEditContact({contact.name, contact.number, contact.id});
-              // }}
-            >
-              Edit
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                onDeleteContact(contact.id);
-              }}
-            >
-              Delete
-            </button>
+            <Tooltip title="Delete">
+              <IconButton
+                onClick={() => {
+                  onDeleteContact(contact.id);
+                }}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
           </li>
         );
       })}

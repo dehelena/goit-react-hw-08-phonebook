@@ -2,6 +2,9 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { register } from 'redux/auth/operations';
 import css from './RegisterForm.module.css';
+import { toast } from 'react-toastify';
+import { Button, TextField, ThemeProvider } from '@mui/material';
+import { theme } from 'components/utils/ThemeProvider';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -25,7 +28,14 @@ export const RegisterForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     //передаємо обєкт нижче в credentials
-    dispatch(register({ name, email, password }));
+    dispatch(register({ name, email, password }))
+      .unwrap()
+      .then(res => {
+        toast.success(`User ${res.user.name} succesfully registered`);
+      })
+      .catch(err => {
+        toast.error(`Oops. Something went wrong... ${err}`);
+      });
     setName('');
     setEmail('');
     setPassword('');
@@ -33,38 +43,55 @@ export const RegisterForm = () => {
 
   return (
     <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <label className={css.label}>
-        Username
-        <input
+      <ThemeProvider theme={theme}>
+        <TextField
+          id="filled-basic"
+          label="Username"
+          variant="filled"
           type="text"
-          name="name"
+          name="username"
           value={name}
           onChange={handleChange}
+          className={css.input}
+          color="secondary"
           required
         />
-      </label>
-      <label className={css.label}>
-        Email
-        <input
+        <TextField
+          id="filled-basic"
+          label="Email"
+          variant="filled"
           type="email"
           name="email"
           value={email}
           onChange={handleChange}
+          className={css.input}
+          color="secondary"
           required
         />
-      </label>
-      <label className={css.label}>
-        Password
-        <input
+
+        <TextField
+          id="filled-basic"
+          label="Password"
+          variant="filled"
           type="password"
           name="password"
           value={password}
           onChange={handleChange}
           minLength={7}
+          className={css.input}
+          color="secondary"
           required
         />
-      </label>
-      <button type="submit">Register</button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          className={css.registerBtn}
+        >
+          Register
+        </Button>
+      </ThemeProvider>
     </form>
   );
 };

@@ -1,16 +1,11 @@
-import { NavLink } from 'react-router-dom';
-import css from './AuthNav.module.css';
+import { NavLinkStyled } from './AuthNav.styled';
 
 //відображається лише коли користувач не увійшов
 export const AuthNav = () => {
   return (
     <div>
-      <NavLink className={css.link} to="/register">
-        Register
-      </NavLink>
-      <NavLink className={css.link} to="/login">
-        Log In
-      </NavLink>
+      <NavLinkStyled to="/register">Register</NavLinkStyled>
+      <NavLinkStyled to="/login">Log In</NavLinkStyled>
     </div>
   );
 };

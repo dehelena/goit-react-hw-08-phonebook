@@ -5,6 +5,7 @@ export const StyledFormAddContacts = styled.form`
   flex-direction: column;
   align-items: flex-start;
   gap: 25px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   padding: 15px;

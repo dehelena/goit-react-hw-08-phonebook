@@ -2,6 +2,9 @@ import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import css from './LoginForm.module.css';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { Button, TextField, ThemeProvider } from '@mui/material';
+import { theme } from 'components/utils/ThemeProvider';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -22,32 +25,53 @@ export const LoginForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(logIn({ email, password }));
+    dispatch(logIn({ email, password }))
+      .unwrap()
+      .then(res => {
+        toast.success(`Hello, ${res.user.name}`);
+      })
+      .catch(err => {});
     setEmail('');
     setPassword('');
   };
 
   return (
     <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <label className={css.label}>
-        Email
-        <input
+      <ThemeProvider theme={theme}>
+        <TextField
+          id="filled-basic"
+          label="Email"
+          variant="filled"
           type="email"
           name="email"
           value={email}
+          color="secondary"
           onChange={handleChange}
+          className={css.input}
+          required
         />
-      </label>
-      <label className={css.label}>
-        Password
-        <input
+
+        <TextField
+          id="filled-basic"
+          label="Password"
+          variant="filled"
           type="password"
           name="password"
           value={password}
+          color="secondary"
           onChange={handleChange}
+          className={css.input}
+          required
         />
-      </label>
-      <button type="submit">Log In</button>
+        <Button
+          variant="contained"
+          type="submit"
+          color="primary"
+          className={css.loginBtn}
+        >
+          Log In
+        </Button>
+      </ThemeProvider>
     </form>
   );
 };

@@ -1,6 +1,5 @@
-import { NavLink } from 'react-router-dom';
 import { useAuth } from 'hooks';
-import css from './Navigation.module.css';
+import { NavLinkStyled } from './Navigation.styled';
 
 //загальнодоступні лінки
 export const Navigation = () => {
@@ -8,14 +7,8 @@ export const Navigation = () => {
 
   return (
     <nav>
-      <NavLink className={css.link} to="/">
-        Home
-      </NavLink>
-      {isLoggedIn && (
-        <NavLink className={css.link} to="/contacts">
-          Contacts
-        </NavLink>
-      )}
+      <NavLinkStyled to="/">Home</NavLinkStyled>
+      {isLoggedIn && <NavLinkStyled to="/contacts">Contacts</NavLinkStyled>}
     </nav>
   );
 };
