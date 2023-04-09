@@ -49,7 +49,7 @@ export const RegisterForm = () => {
           label="Username"
           variant="filled"
           type="text"
-          name="username"
+          name="name"
           value={name}
           onChange={handleChange}
           className={css.input}
