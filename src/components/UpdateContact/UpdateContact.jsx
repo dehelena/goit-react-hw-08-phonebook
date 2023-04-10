@@ -21,7 +21,7 @@ const style = {
   p: 4,
 };
 
-export default function UpdateContact({ contactId }) {
+export default function UpdateContact({ id }) {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -31,16 +31,23 @@ export default function UpdateContact({ contactId }) {
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
 
-  const allContacts = useSelector(selectContacts);
+  const contacts = useSelector(selectContacts);
+
+  useEffect(() => {
+    const { name, number } = contacts.find(el => el.id === id);
+    setName(name);
+    setNumber(number);
+  }, [contacts, id]);
 
   const handleUpdate = e => {
     e.preventDefault();
 
-    const contact = {
+    const updatedContact = {
       name,
       number,
+      id,
     };
-    dispatch(updateContact({ contact, contactId }));
+    dispatch(updateContact(updatedContact));
     handleClose();
   };
 

@@ -79,7 +79,7 @@ const contactsSlice = createSlice({
           payload: { id, name, number },
         } = action;
         state.contacts = state.contacts.map(contact =>
-          contact.id === id ? { ...contact, name, number } : contact
+          contact.id === id ? { ...contact, name, number, id } : contact
         );
       })
       .addCase(updateContact.rejected, handleRejected);

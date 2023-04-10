@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyledFormAddContacts } from './FormAddContact.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 
@@ -14,7 +13,6 @@ export const FormAddContact = () => {
     e.preventDefault();
 
     const contact = {
-      id: nanoid(6),
       name: form.elements.name.value,
       number: form.elements.number.value,
     };
