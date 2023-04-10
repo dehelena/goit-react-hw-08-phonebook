@@ -78,7 +78,7 @@ const contactsSlice = createSlice({
         const {
           payload: { id, name, number },
         } = action;
-        state.contacts = state.contacts.map(contact =>
+        state.items = state.items.map(contact =>
           contact.id === id ? { ...contact, name, number, id } : contact
         );
       })
