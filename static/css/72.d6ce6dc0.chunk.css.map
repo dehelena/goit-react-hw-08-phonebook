@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/72.d6ce6dc0.chunk.css","mappings":"AAAA,mCACE,eAAgB,CAChB,iBACF","sources":["components/ContactsCounter/ContactsCounter.module.css"],"sourcesContent":[".countsText {\n  margin-top: 15px;\n  text-align: center;\n}\n"],"names":[],"sourceRoot":""}
