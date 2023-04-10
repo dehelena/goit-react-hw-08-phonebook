@@ -43,6 +43,7 @@ export const RegisterForm = () => {
 
   return (
     <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
+      <h2>Please sign up</h2>
       <ThemeProvider theme={theme}>
         <TextField
           id="filled-basic"

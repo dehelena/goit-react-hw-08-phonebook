@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { IconButton } from '@mui/material';
 
 export const ContactStyled = styled.ul`
   margin-top: 30px;
@@ -26,4 +27,8 @@ export const ContactStyled = styled.ul`
     color: #fff;
     background-color: #47946a;
   }
+`;
+
+export const DeleteBtnStyled = styled(IconButton)`
+  margin-left: 20px;
 `;

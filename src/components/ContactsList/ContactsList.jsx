@@ -2,9 +2,10 @@ import React from 'react';
 import { ContactStyled } from './ContactsStyled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectFilteredTerm } from 'redux/contacts/selectors';
-import { deleteContact } from 'redux/contacts/operations';
+import { deleteContact, updateContact } from 'redux/contacts/operations';
 import { IconButton, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import UpdateContact from 'components/UpdateContact/UpdateContact';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -27,6 +28,7 @@ export const ContactList = () => {
           <li key={contact.id} className="contactItem">
             <span>{contact.name} </span>
             <span> {contact.number} </span>
+            <UpdateContact />
             <Tooltip title="Delete">
               <IconButton
                 onClick={() => {
