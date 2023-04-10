@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useState } from 'react';
@@ -8,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateContact } from 'redux/contacts/operations';
 import { useEffect } from 'react';
 import { selectContacts } from 'redux/contacts/selectors';
+import { BtnWrapperStyled, FormStyled } from './UpdateContact.styled';
+import { Button } from '@mui/material';
 
 const style = {
   position: 'absolute',
@@ -23,7 +24,6 @@ const style = {
 
 export default function UpdateContact({ id }) {
   const [open, setOpen] = useState(false);
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -83,34 +83,51 @@ export default function UpdateContact({ id }) {
             component="span"
           >
             <form onSubmit={handleUpdate}>
-              <label className="label">
-                <span>Name</span>
-                <input
-                  type="text"
-                  name="name"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                  title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                  required
-                />
-              </label>
-              <label className="label">
-                <span>Number</span>
-                <input
-                  type="tel"
-                  name="number"
-                  pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                  title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                  value={number}
-                  onChange={e => setNumber(e.target.value)}
-                  required
-                />
-              </label>
-              <button type="submit">Update</button>
-              <button type="submit" onClick={handleClose}>
-                Cancel
-              </button>
+              <FormStyled>
+                <label className="label">
+                  <span>Name</span>
+                  <input
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                    title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                    required
+                  />
+                </label>
+                <label className="label">
+                  <span>Number</span>
+                  <input
+                    type="tel"
+                    name="number"
+                    pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                    title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                    value={number}
+                    onChange={e => setNumber(e.target.value)}
+                    required
+                  />
+                </label>
+              </FormStyled>
+              <BtnWrapperStyled>
+                <button
+                  type="submit"
+                  size="md"
+                  variant={'soft'}
+                  color="success"
+                >
+                  Update
+                </button>
+                <button
+                  type="submit"
+                  size="md"
+                  variant={'soft'}
+                  color="success"
+                  onClick={handleClose}
+                >
+                  Cancel
+                </button>
+              </BtnWrapperStyled>
             </form>
           </Typography>
         </Box>
