@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContactStyled } from './ContactsStyled';
+import { BoxStyled, ContactStyled } from './ContactsStyled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectFilteredTerm } from 'redux/contacts/selectors';
 import { deleteContact } from 'redux/contacts/operations';
@@ -26,18 +26,22 @@ export const ContactList = () => {
       {filteredContacts.map(contact => {
         return (
           <li key={contact.id} className="contactItem">
-            <span>{contact.name} </span>
-            <span> {contact.number} </span>
-            <UpdateContact id={contact.id} />
-            <Tooltip title="Delete">
-              <IconButton
-                onClick={() => {
-                  onDeleteContact(contact.id);
-                }}
-              >
-                <DeleteIcon />
-              </IconButton>
-            </Tooltip>
+            <BoxStyled component="div">
+              <span>{contact.name} </span>
+              <span> {contact.number} </span>
+            </BoxStyled>
+            <BoxStyled component="div">
+              <UpdateContact id={contact.id} />
+              <Tooltip title="Delete">
+                <IconButton
+                  onClick={() => {
+                    onDeleteContact(contact.id);
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Tooltip>
+            </BoxStyled>
           </li>
         );
       })}

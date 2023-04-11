@@ -7,7 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateContact } from 'redux/contacts/operations';
 import { useEffect } from 'react';
 import { selectContacts } from 'redux/contacts/selectors';
-import { BtnWrapperStyled, FormStyled } from './UpdateContact.styled';
+import {
+  BtnWrapperStyled,
+  FormStyled,
+  TypographyStyled,
+} from './UpdateContact.styled';
 import { Button } from '@mui/material';
 
 const style = {
@@ -66,7 +70,7 @@ export default function UpdateContact({ id }) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Edit</Button>
+      <Button onClick={handleOpen}>Update</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -74,9 +78,9 @@ export default function UpdateContact({ id }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            <b>Update contact</b>
-          </Typography>
+          <TypographyStyled id="modal-modal-title" variant="h6" component="h2">
+            Update contact
+          </TypographyStyled>
           <Typography
             id="modal-modal-description"
             sx={{ mt: 2 }}
