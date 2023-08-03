@@ -2,9 +2,9 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { register } from 'redux/auth/operations';
 import css from './RegisterForm.module.css';
+import { theme } from 'components/utils/ThemeProvider';
 import { toast } from 'react-toastify';
 import { Button, TextField, ThemeProvider } from '@mui/material';
-import { theme } from 'components/utils/ThemeProvider';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
